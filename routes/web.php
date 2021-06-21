@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\HelloMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
