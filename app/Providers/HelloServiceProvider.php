@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Facade\FlareClient\View;
 use Illuminate\Support\ServiceProvider;
+use Validator;
+use App\Http\Validators\Hellovalidator;
 
 class HelloServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,8 @@ class HelloServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('hello.index', 'App\Http\Composers\HelloComposer');
+        Validator::extend('hello', function($attribute, $value, $parameters, $validator) {
+            return $value % 2 == 0;
+        });
     }
 }
