@@ -11,6 +11,15 @@ class Person extends Model
 {
     use HasFactory;
 
+    protected $guaded = array('id');
+    protected $fillable = ['name', 'mail', 'age'];
+
+    public static $rules = array(
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'integer|min:0|max:150'
+    );
+
     public function getData()
     {
         return $this->id . ': ' . $this->name . '(' . $this->age . ')';
