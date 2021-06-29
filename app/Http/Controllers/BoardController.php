@@ -13,10 +13,9 @@ class BoardController extends Controller
         return view('board.index', ['items' => $items]);
     }
 
-    /*
     public function add(Request $request)
     {
-        return view('board.php');
+        return view('board.add');
     }
 
     public function create(Request $request)
@@ -28,5 +27,4 @@ class BoardController extends Controller
         $board->fill($form)->save();
         return redirect('/board');
     }
-    */
 }

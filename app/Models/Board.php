@@ -10,6 +10,7 @@ class Board extends Model
     use HasFactory;
 
     protected $guardsd = array('id');
+    protected $fillable = ['person_id', 'title', 'message'];
 
     public static $rules = array(
         'person_id' => 'required',
