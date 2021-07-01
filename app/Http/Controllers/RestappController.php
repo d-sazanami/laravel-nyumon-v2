@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restdata;
 use Illuminate\Http\Request;
 
 class RestappController extends Controller
@@ -13,7 +14,8 @@ class RestappController extends Controller
      */
     public function index()
     {
-        //
+       $items = Restdata::all();
+       return $items->toArray();
     }
 
     /**
