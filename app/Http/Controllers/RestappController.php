@@ -25,7 +25,7 @@ class RestappController extends Controller
      */
     public function create()
     {
-        //
+        return view('rest.create');
     }
 
     /**
