@@ -27,8 +27,8 @@ class HelloTest extends TestCase
         $response = $this->get('/hello');
         $response->assertStatus(302);
 
-        $user = User::factory()->make();
-        Person::factory()->make();
+        $user = User::factory()->create();
+        Person::factory()->create();
         $response = $this->actingAs($user)->get('/hello');
         $response->assertStatus(200);
 
