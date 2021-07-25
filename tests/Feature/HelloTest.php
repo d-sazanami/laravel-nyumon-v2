@@ -19,20 +19,29 @@ class HelloTest extends TestCase
      */
     public function testHello()
     {
-        $this->assertTrue(true);
+        User::factory()->create([
+            'name' => 'AAA',
+            'email' => 'BBB@CCC.COM',
+            'password' => 'ABCABC',
+        ]);
+        User::factory()->count(10)->create();
+        $this->assertDatabaseHas('users', [
+            'name' => 'AAA',
+            'email' => 'BBB@CCC.COM',
+            'password' => 'ABCABC',
+        ]);
 
-        $response = $this->get('/');
-        $response->assertStatus(200);
+        Person::factory()->create([
+            'name' => 'XXX',
+            'mail' => 'YYY@ZZZ.COM',
+            'age' => 123,
+        ]);
+        Person::factory()->count(10)->create();
+        $this->assertDatabaseHas('people', [
+            'name' => 'XXX',
+            'mail' => 'YYY@ZZZ.COM',
+            'age' => 123,
+        ]);
 
-        $response = $this->get('/hello');
-        $response->assertStatus(302);
-
-        $user = User::factory()->create();
-        Person::factory()->create();
-        $response = $this->actingAs($user)->get('/hello');
-        $response->assertStatus(200);
-
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
     }
 }
